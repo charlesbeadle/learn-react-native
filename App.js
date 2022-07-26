@@ -1,43 +1,19 @@
 import React from 'react';
-import { StatusBar, StyleSheet, View, Text } from 'react-native';
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import Home from "./Home";
+import About from "./About";
+
+const Stack = createNativeStackNavigator();
 
 export default function App() {
-  const { container, box, boxText } = styles;
   return (
-    <>
-    <StatusBar/>
-    <View style={container}>
-      <View style={box}>
-        <Text style={boxText}>A</Text>
-      </View>
-      <View style={box}>
-        <Text style={boxText}>B</Text>
-      </View>
-      <View style={box}>
-        <Text style={boxText}>C</Text>
-      </View>
-    </View>
-    </>
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen name="Home" component={Home} />
+        <Stack.Screen name="About" component={About} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'space-between',
-    height: '100%'
-  },
-  box: {
-    height: 100,
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: 'gray',
-  },
-  boxText: {
-    color: '#fff',
-    fontWeight: 'bold',
-    fontSize: 24
-  }
-});
